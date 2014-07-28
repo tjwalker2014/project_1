@@ -1,5 +1,5 @@
 class CampusesController < ApplicationController
-  before_filter :authenticate, except: [:index]
+  before_filter :authenticate, except: [:index, :show]
   
   def index
     @campuses = Campus.all
@@ -14,7 +14,7 @@ class CampusesController < ApplicationController
   end
 
   def create
-    @campus = Campus.new(params[:category])
+    @campus = Campus.new(params[:campus])
     if @campus.save
       redirect_to @campus, :notice => "Successfully created campus."
     else

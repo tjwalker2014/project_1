@@ -1,43 +1,43 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate, except: [:index]
+  before_filter :authenticate, except: [:index, :show]
   
   def index
-    @campuses = Campus.all
+    @campuses = Course.all
   end
 
   def show
-    @campus = Campus.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def new
-    @campus = Campus.new
+    @course = Course.new
   end
 
   def create
-    @campus = Campus.new(params[:category])
-    if @campus.save
-      redirect_to @campus, :notice => "Successfully created campus."
+    @course = Course.new(params[:course])
+    if @course.save
+      redirect_to @course, :notice => "Successfully created course."
     else
       render :action => 'new'
     end
   end
 
   def edit
-    @campus = Campus.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def update
-    @campus = Campus.find(params[:id])
-    if @campus.update_attributes(params[:campus])
-      redirect_to @campus, :notice  => "Successfully updated campus."
+    @course = Course.find(params[:id])
+    if @course.update_attributes(params[:course])
+      redirect_to @course, :notice  => "Successfully updated course."
     else
       render :action => 'edit'
     end
   end
 
   def destroy
-    @campus = Campus.find(params[:id])
-    @campus.destroy
-    redirect_to campuses_url, :notice => "Successfully deleted campus."
+    @course = Course.find(params[:id])
+    @course.destroy
+    redirect_to campuses_url, :notice => "Successfully deleted course."
   end
 end
