@@ -1,5 +1,5 @@
 class Room < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :campus_id
 
   belongs_to :campus
 
