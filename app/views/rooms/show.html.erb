@@ -1,0 +1,21 @@
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+  <p>
+    <strong>Courses running in this room:</strong>
+      <% @room.courses.each do |course| %>
+
+      <p><%= course.name %></p>
+
+      <% end %>
+  </p>
+
+<!-- this code breaks because when you create a room you don't immediately assign it any courses -->
+
+<p>
+  <%= link_to "Edit", edit_room_path(@room) %> |
+  <%= link_to "Destroy", @room, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", rooms_path %>
+</p>

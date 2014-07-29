@@ -1,0 +1,18 @@
+<%= form_for @course do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :room_id %><br />
+    <%= f.collection_select :room_id, Room.all, :id, :name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<!-- need some code to populate drop down box with campus-specific rooms -->

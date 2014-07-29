@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20140728155511) do
     t.datetime "updated_at",    :null => false
   end
 
+# not using join table at the moment but may use it in future. atm user can only be on one course at a time
+
   create_table "courses_users", :id => false, :force => true do |t|
     t.integer "course_id"
     t.integer "user_id"

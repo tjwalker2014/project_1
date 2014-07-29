@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   #   binding.pry
   end
 
-  attr_accessible :name, :email, :password, :password_confirmation, :role, :course_ids
+  attr_accessible :name, :email, :password, :password_confirmation, :role, :course_id
 
-  has_and_belongs_to_many :courses
+  # has_and_belongs_to_many :courses
+  belongs_to :course
 end

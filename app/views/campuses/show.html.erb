@@ -1,0 +1,25 @@
+<p>
+  <strong>Name:</strong>
+  <%= @campus.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @campus.location %>
+</p>
+
+<p>
+  <strong>Courses running at this campus:</strong>
+  <% @campus.all_courses.each do |course| %>
+
+    <p><%= course.name %></p>
+    <p><%= course.room.name %></p>
+
+    <% end %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_campus_path(@campus) %> |
+  <%= link_to "Destroy", @campus, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", campuses_path %>
+</p>

@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_filter :authenticate, except: [:index, :show]
+  # before_filter :authenticate, except: [:index, :show]
   
   def index
     @rooms = Room.all
@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(params[:room])
     if @room.save
-      redirect_to @room, :notice => "Successfully created room."
+      redirect_to rooms_path, :notice => "Successfully created room."
     else
       render :action => 'new'
     end

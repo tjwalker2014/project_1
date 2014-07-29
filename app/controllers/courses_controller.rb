@@ -1,12 +1,14 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate, except: [:index, :show]
+  # before_filter :authenticate, except: [:index, :show]
   
   def index
-    @campuses = Course.all
+    @courses = Course.all
+    #binding.pry
   end
 
   def show
     @course = Course.find(params[:id])
+    #binding.pry
   end
 
   def new
