@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140728155511) do
+ActiveRecord::Schema.define(:version => 20140730122213) do
 
   create_table "campuses", :force => true do |t|
     t.string   "name"
-    t.string   "location"
     t.text     "google_map_source"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -24,14 +23,13 @@ ActiveRecord::Schema.define(:version => 20140728155511) do
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "campus_id"
     t.integer  "room_id"
     t.datetime "start_details"
     t.datetime "end_details"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
-
-# not using join table at the moment but may use it in future. atm user can only be on one course at a time
 
   create_table "courses_users", :id => false, :force => true do |t|
     t.integer "course_id"
@@ -50,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20140728155511) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "role"
-    t.integer  "course_id"
+    t.integer  "campus_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

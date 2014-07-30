@@ -15,20 +15,28 @@
     <%= f.text_field :password %>
   </p>
 
-  <p>
-    <%= f.label :course_id %><br />
-    <%= f.collection_select :course_id, Course.all, :id, :name %>
-  </p>
+  
+  <%= f.label :role %><br />
+  <%= f.select(:role, ["student", "instructor", "admin"]) %>
+  
 
   <p>
-    <%= f.label :role %><br />
-    <%= f.collection_select :role, Role.all, :id, :name %>
+    <% Course.all.each do |course| %>
+
+      <%= check_box_tag 'user[course_ids][]', course.id, @user.courses.include?(course), id: "courses_users_ids_#{course.id}"  %>
+
+    <%= f.label :course_ids, course.name, for: "courses_users_ids_#{course.id}" %><br />
+    
+    <% end %>
   </p>
+
+ 
+
+
+
   <p><%= f.submit %></p>
 <% end %>
 
 <!-- drop box to select type of user but then only -->
 
 <!-- look at lesson notes on how to keep user email/password details secure -->
-
-:name, :email, :password, :password_confirmation, :role, :course_id

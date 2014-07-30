@@ -10,7 +10,17 @@
 
 <p>
   <strong>Currently studying:</strong>
-  <%= @user.course.name %>
+  <% @user.courses.each do |course| %>
+
+    <%= course.name %>
+
+  <% end %>
+
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
 </p>
 
 <p>

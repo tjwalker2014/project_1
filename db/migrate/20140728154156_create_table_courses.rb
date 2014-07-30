@@ -3,6 +3,7 @@ class CreateTableCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string :name
       t.text :description
+      t.integer :campus_id
       t.integer :room_id
       t.datetime :start_details
       t.datetime :end_details

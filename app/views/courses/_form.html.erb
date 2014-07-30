@@ -4,14 +4,32 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+
   <p>
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </p>
+
+  <p>
+    <%= f.label :campus_id %><br />
+    <%= f.collection_select :campus_id, Campus.all, :id, :name %>
+  </p>
+
   <p>
     <%= f.label :room_id %><br />
     <%= f.collection_select :room_id, Room.all, :id, :name %>
   </p>
+
+   <p>
+    <%= f.label :start_details %><br />
+    <%= f.date_select :start_details %>
+  </p>
+
+  <p>
+    <%= f.label :end_details %><br />
+    <%= f.date_select :end_details %>
+  </p>
+
   <p><%= f.submit %></p>
 <% end %>
 

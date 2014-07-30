@@ -4,19 +4,25 @@
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @campus.location %>
-</p>
-
-<p>
   <strong>Courses running at this campus:</strong>
-  <% @campus.all_courses.each do |course| %>
+  <% @campus.courses.each do |course| %>
 
     <p><%= course.name %></p>
     <p><%= course.room.name %></p>
 
     <% end %>
 </p>
+
+<p>
+  <strong>Students at this campus:</strong>
+  <% @campus.users.each do |user| %>
+
+    <p><%= user.name %></p>
+
+    <% end %>
+</p>
+
+
 
 <p>
   <%= link_to "Edit", edit_campus_path(@campus) %> |

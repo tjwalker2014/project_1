@@ -5,7 +5,7 @@ class CreateTableUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :role
-      t.integer :course_id
+      t.integer :campus_id
       t.timestamps
     end
   end
