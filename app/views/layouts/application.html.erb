@@ -8,12 +8,44 @@
 </head>
 <body>
 
-  <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
+  <div id="wrapper">
 
-<%= yield %>
+    <header><div id="header-wrapper">
+      <div id="GA"><img src="/assets/galogo.jpeg", width="50"></div>
+      <h1>General Assembly</h1></div>
+    </header>
+
+    <div id="content">
+
+        <% if current_user %>
+         <p> hello, <%= current_user.email %> </p>
+         <%= link_to 'Logout', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% else %>
+         <%= link_to 'Please login', login_path %>
+        <% end %>
+
+        <div id="container">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %>
+
+      <%= yield %>
+
+      </div>
+
+    </div>
+
+    <div id="push"></div>
+
+    <div id="footer">
+        <ul>
+          <li><%= link_to image_tag("1406768127_Facebook.png", :width =>"40"), "https://www.facebook.com/gnrlassembly" %></li>
+          <li><%= link_to image_tag("1406768136_Twitter.png", :width =>"40"), "https://twitter.com/GA_London" %></li>
+          <li><%= link_to image_tag("1406768149_LinkedIn.png", :width =>"40"), "https://www.linkedin.com/company/2408664" %></li>
+        </ul>
+    </div>
+
+  </div>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+before_filter :authenticate, except: [:new, :create]
   def index
     @users = User.all
   end
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     #binding.pry
     @user = User.new(params[:user])
     if @user.save
+      session[:user_id] = @user.id
       redirect_to @user, :notice => "Successfully created user."
     else
       render :action => 'new'

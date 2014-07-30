@@ -1,0 +1,75 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url(gastudents.jpg);
+  background-size: cover;
+  font-family: garamond;
+  text-align: left;
+}
+
+ #wrapper {
+  background-color: rgba(0,0,0,0.3);
+  width: 600px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  position:relative;
+}
+
+header {
+  background: white;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+#header-wrapper {
+  padding:5px;
+}
+
+
+#GA {
+  margin-top: 5px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#content {
+  background: white;
+  margin-bottom: 10px;
+  min-height: 300px;
+  padding: 0 20px;
+}
+
+#push{
+  height: 2px;
+}
+
+#footer {
+  background: white;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 5px;
+}
+
+li {
+  text-align: center;
+  display: inline-block;
+}
+
