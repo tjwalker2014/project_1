@@ -14,7 +14,7 @@
     <%= f.label :campus_id %><br />
     <%= f.collection_select :campus_id, Campus.all, :id, :name %>
   </p>
-
+  
   <p>
     <%= f.label :room_id %><br />
     <%= f.collection_select :room_id, Room.all, :id, :name %>

@@ -8,5 +8,6 @@
     <%= f.label :campus_id %><br />
     <%= f.collection_select :campus_id, Campus.all, :id, :name %>
   </p>
+
   <p><%= f.submit %></p>
 <% end %>

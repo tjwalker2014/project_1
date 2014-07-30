@@ -4,6 +4,11 @@
 </p>
 
 <p>
+  <strong>Location:</strong>
+    <iframe src=<%= @campus.google_map_source %> width="300" height="300" frameborder="0" style="border:0"></iframe>
+</p>
+
+<p>
   <strong>Courses running at this campus:</strong>
   <% @campus.courses.each do |course| %>
 
