@@ -22,15 +22,15 @@
 
    <p>
     <%= f.label :start_details %><br />
-    <%= f.date_select :start_details %>
+    <%= f.date_select :start_details, start_year: Time.now.year %>
   </p>
 
   <p>
     <%= f.label :end_details %><br />
-    <%= f.date_select :end_details %>
+    <%= f.date_select :end_details, start_year: Time.now.year %>
   </p>
 
-  <p><%= f.submit %></p>
+  <p><%= f.submit class: 'button' %></p>
 <% end %>
 
 <!-- need some code to populate drop down box with campus-specific rooms -->

@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20140730122213) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "role"
+    t.string   "role",            :default => "student"
     t.integer  "campus_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
 end

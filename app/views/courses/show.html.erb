@@ -24,19 +24,22 @@
 </p>
 
 <p>
-  <strong>Current users on this course:</strong>
-  <% @course.users.each do |user| %>
-
-    <%= user.name %>
+  <strong>Instructors:</strong>
+  <% @instructors.each do |instructor| %>
+    
+    <%= instructor.name %>
 
   <% end %>
 </p>
 
-<!-- some code to only show all users on current course if user is instructor or admin? -->
-<!-- some code to show instructors on course? -->
+<% if current_user.role == 'admin' || current_user.role == 'instructor' %>
+  <p>
+    <strong>Students on this course:</strong>
+    <% @students.each do |student| %>
 
-<p>
-  <%= link_to "Edit", edit_course_path(@course) %> |
-  <%= link_to "Destroy", @course, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", courses_path %>
-</p>
+      <%= student.name %>
+
+    <% end %>
+  </p>
+<% end %>
+

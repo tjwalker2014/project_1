@@ -3,6 +3,8 @@
   <%= @campus.name %>
 </p>
 
+<%# if statement for showing of google maps %>
+
 <p>
   <strong>Location:</strong>
     <iframe src=<%= @campus.google_map_source %> width="300" height="300" frameborder="0" style="border:0"></iframe>
@@ -31,6 +33,6 @@
 
 <p>
   <%= link_to "Edit", edit_campus_path(@campus) %> |
-  <%= link_to "Destroy", @campus, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Delete", @campus, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", campuses_path %>
 </p>

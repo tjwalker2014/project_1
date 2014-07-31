@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
-  # before_filter :authenticate, except: [:index, :show]
-  
+  before_filter :authenticate, except: [:index, :show]
+  load_and_authorize_resource
+
   def index
     @courses = Course.all
     #binding.pry
@@ -8,7 +9,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    #binding.pry
+    @instructors = @course.users.where(role: 'instructor')
+    @students = @course.users.where(role: 'student')
   end
 
   def new
@@ -40,6 +42,6 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    redirect_to campuses_url, :notice => "Successfully deleted course."
+    redirect_to courses_url, :notice => "Successfully deleted course."
   end
 end

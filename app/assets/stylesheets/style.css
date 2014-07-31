@@ -6,7 +6,6 @@
 body {
   background: url(gastudents.jpg);
   background-size: cover;
-  /*font-family: 'Open Sans', sans-serif;*/
   font-family: 'Oswald', sans-serif;
   text-align: left;
 }
@@ -20,9 +19,9 @@ body {
 
 header {
   text-align: center;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 10px 0 2px 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .headerclass {
@@ -33,22 +32,36 @@ header {
   font-weight: bold;
 }
 
-
-#GA {
+nav {
   text-align: center;
-  width: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 5px 0;
 }
+
+#nav_ul {
+  padding: 3px;
+}
+
+.nav_li {
+  list-style: none;
+  margin: 0 10px;
+}
+
 
 a {
   text-decoration: none;
-  color: white;
+  color: black;
+}
+
+a:hover {
+  opacity: 0.5;
 }
 
 #content {
-  background: white;
-  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
   min-height: 300px;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 
 #push{
@@ -56,7 +69,7 @@ a {
 }
 
 #footer {
-  background: white;
+  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
 }
 
@@ -64,11 +77,31 @@ ul {
   text-align: center;
   list-style: none;
   margin: 0;
-  padding: 10px 15px 5px 0px;
+  padding: 10px 10px 5px 0px;
 }
 
 li {
   text-align: center;
   display: inline-block;
+  margin: 0 2px;
 }
 
+td {
+  padding: 5px;
+}
+
+.button {
+  font-family: 'Oswald', sans-serif;
+}
+
+.button:hover {
+  opacity: 0.5;
+}
+
+td {
+  padding: 5px 15px 5px 0;
+}
+
+th {
+  padding: 5px 15px 0 0;
+}

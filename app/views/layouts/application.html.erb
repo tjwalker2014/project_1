@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
   <title>GaSchedulerApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -14,17 +13,30 @@
 
     <header>
       <div class="headerclass">General</div>
-      <div class="headerclass"><img src="/assets/galogo.jpeg", width="50"></div>
+      <div class="headerclass"><img src="/assets/galogo2.png", width="50"></div>
       <div class="headerclass">Assembly</div>
     </header>
+
+    <nav>
+      <ul id="nav_ul">
+        <li class="nav_li"><%= link_to "Home", homepage_index_path %></li>
+        <li class="nav_li"><%= link_to "Locations", campuses_path %></li>
+        <li class="nav_li"><%= link_to "Courses", courses_path %></li>
+        <% if current_user && current_user.role == 'admin' %>
+          <li class="nav_li"><%= link_to "Users", users_path %></li>
+        <% elsif current_user %>
+          <li class="nav_li"><%= link_to "My Profile", user_path(current_user.id) %></li>
+        <% end %>
+      </ul>
+    </nav>
 
     <div id="content">
 
         <% if current_user %>
          <p> hello, <%= current_user.email %> </p>
-         <%= link_to 'Logout', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
+         <%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
         <% else %>
-         <%= link_to 'Please login', login_path %>
+         <%= link_to 'Log in', login_path %>
         <% end %>
 
         <div id="container">
@@ -42,9 +54,9 @@
 
     <div id="footer">
         <ul>
-          <li><%= link_to image_tag("1406768127_Facebook.png", :width =>"40"), "https://www.facebook.com/gnrlassembly" %></li>
-          <li><%= link_to image_tag("1406768136_Twitter.png", :width =>"40"), "https://twitter.com/GA_London" %></li>
-          <li><%= link_to image_tag("1406768149_LinkedIn.png", :width =>"40"), "https://www.linkedin.com/company/2408664" %></li>
+          <li><%= link_to image_tag("1406768127_Facebook.png", :width =>"40"), "https://www.facebook.com/gnrlassembly", :target => "_blank" %></li>
+          <li><%= link_to image_tag("1406768136_Twitter.png", :width =>"40"), "https://twitter.com/GA_London", :target => "_blank" %></li>
+          <li><%= link_to image_tag("1406768149_LinkedIn.png", :width =>"40"), "https://www.linkedin.com/company/2408664", :target => "_blank" %></li>
         </ul>
     </div>
 

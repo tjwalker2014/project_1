@@ -29,9 +29,9 @@ course1 = Course.create(name: "Web Development Immersive", description: "blah bl
 course2 = Course.create(name: "User Experience Design Immersive", description: "blah blah blah", campus_id: campus1.id, room_id: londonroom2.id, start_details: DateTime.new(2014, 8, 4), end_details: DateTime.new(2014, 8, 6))
 course3 = Course.create(name: "Product Management", description: "blah blah blah", campus_id: campus1.id, room_id: londonroom3.id, start_details: DateTime.new(2014, 8, 4), end_details: DateTime.new(2014, 8, 7))
 
-user1 = User.create(name: "Tom", email: "tom@email.com", password: "password", role: "student", campus_id: campus1.id)
-user2 = User.create(name: "David", email: "david@email.com", password: "password", role: "student", campus_id: campus1.id)
-user3 = User.create(name: "Gwen", email: "gwen@email.com", password: "password", role: "student", campus_id: campus1.id)
+user1 = User.create(name: "Tom", email: "tom@email.com", password: "password", role: "admin", campus_id: campus1.id)
+user2 = User.create(name: "David", email: "david@email.com", password: "password", campus_id: campus1.id)
+user3 = User.create(name: "Gwen", email: "gwen@email.com", password: "password", campus_id: campus1.id)
 
 user1.course_ids = [course1.id]
 user2.course_ids = [course1.id]

@@ -4,7 +4,7 @@ class CreateTableUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password_digest
-      t.string :role
+      t.string :role, default: 'student'
       t.integer :campus_id
       t.timestamps
     end

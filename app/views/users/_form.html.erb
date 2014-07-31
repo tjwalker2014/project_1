@@ -1,4 +1,3 @@
-  <h1>Sign Up</h1>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
@@ -26,11 +25,13 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
     </div>
-    <div class="field">
-      <%= f.label :role %><br />
-      <%= f.select(:role, ["student", "instructor", "admin"]) %>
-    </div>
 
+    <% if current_user.role == 'admin' %>
+      <div class="field">
+        <%= f.label :role %><br />
+        <%= f.select(:role, ["student", "instructor", "admin"]) %>
+      </div>
+    <% end %>
       <p>
     <% Course.all.each do |course| %>
 
@@ -41,8 +42,7 @@
     <% end %>
     </p>
 
-
-    <div class="actions"><%= f.submit %></div>
+    <p><%= f.submit class: 'button' %></p>
   <% end %>
 
 <!-- drop box to select type of user but then only -->
