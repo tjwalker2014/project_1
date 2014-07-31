@@ -5,34 +5,58 @@
 
 <%# if statement for showing of google maps %>
 
-<p>
-  <strong>Location:</strong>
-    <iframe src=<%= @campus.google_map_source %> width="300" height="300" frameborder="0" style="border:0"></iframe>
-</p>
+<% if @campus.google_map_source do %>
+  <p>
+    <strong>Location:</strong>
+      <iframe src=<%= @campus.google_map_source %> width="300" height="300" frameborder="0" style="border:0"></iframe>
+  </p>
+  <% end %>
+<% end %>
 
 <p>
   <strong>Courses running at this campus:</strong>
+  
+    <table>
+      <tr>
+        <th>Course</th>
+        <th>Room</th>
+
   <% @campus.courses.each do |course| %>
 
-    <p><%= course.name %></p>
-    <p><%= course.room.name %></p>
+      </tr>
+        <tr>
+          <td><%= course.name %></td>
+          <td><%= course.room.name %></td>
+        </tr>
+  <% end %>
 
-    <% end %>
+  </table>
 </p>
 
 <p>
-  <strong>Students at this campus:</strong>
-  <% @campus.users.each do |user| %>
+  <strong>Instructors:</strong>
+  <% @instructors.each do |instructor| %>
+    
+    <%= instructor.name %>
 
-    <p><%= user.name %></p>
-
-    <% end %>
+  <% end %>
 </p>
 
+<% if current_user.role == 'admin' || current_user.role == 'instructor' %>
+  <p>
+    <strong>Students on this course:</strong>
+    <% @students.each do |student| %>
 
+      <%= student.name %>
+
+    <% end %>
+  </p>
+<% end %>
 
 <p>
   <%= link_to "Edit", edit_campus_path(@campus) %> |
   <%= link_to "Delete", @campus, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", campuses_path %>
 </p>
+
+<p><%= link_to "Campus Rooms", rooms_path %></p>

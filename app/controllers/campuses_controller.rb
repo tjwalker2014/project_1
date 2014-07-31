@@ -7,6 +7,8 @@ class CampusesController < ApplicationController
 
   def show
     @campus = Campus.find(params[:id])
+    @instructors = @campus.users.where(role: 'instructor')
+    @students = @campus.users.where(role: 'student')
   end
 
   def new

@@ -1,9 +1,5 @@
 module ApplicationHelper
-  # def all_courses
-  #   result = []
-  #   self.rooms.each do |room|
-  #     result << room.courses
-  #   end
-  #   result.flatten
-  # end
+ def change_error_messages(user)
+  user.errors.messages[:password_digest] = ["test"]
+ end
 end
