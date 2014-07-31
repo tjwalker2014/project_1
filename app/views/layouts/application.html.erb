@@ -33,7 +33,7 @@
     <div id="content">
 
         <% if current_user %>
-         <p> hello, <%= current_user.email %> </p>
+         <p> Hello, <%= current_user.email %> </p>
          <%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
         <% else %>
          <%= link_to 'Log in', login_path %>
@@ -47,7 +47,7 @@
       <%= yield %>
 
       </div>
-
+    
     </div>
 
     <div id="push"></div>
@@ -57,6 +57,8 @@
           <li><%= link_to image_tag("1406768127_Facebook.png", :width =>"40"), "https://www.facebook.com/gnrlassembly", :target => "_blank" %></li>
           <li><%= link_to image_tag("1406768136_Twitter.png", :width =>"40"), "https://twitter.com/GA_London", :target => "_blank" %></li>
           <li><%= link_to image_tag("1406768149_LinkedIn.png", :width =>"40"), "https://www.linkedin.com/company/2408664", :target => "_blank" %></li>
+          <li><%= link_to image_tag("1406845729_Intsagram.png", :width =>"40"), "http://instagram.com/ga_london", :target => "_blank" %></li>
+          <li><%= mail_to "me@domain.com", image_tag("1406845332_Mail.png", :width =>"40") %></li>
         </ul>
     </div>
 

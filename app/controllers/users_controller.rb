@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 before_filter :authenticate, except: [:new, :create]
 load_and_authorize_resource
+  
   def index
-    @users = User.all
+    #@users = User.all
+    @q = User.search(params[:q])
+    @users = @q.result
+    @q.build_condition
   end
 
   def show
