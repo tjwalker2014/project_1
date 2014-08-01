@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   private
   def authenticate
     unless logged_in?
-      flash[:error] = "You must be logged in to access this section of the site"
+      flash[:error] = "Sorry, but you need to be logged in to access this bit"
       redirect_to login_url
     end
   end
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url , alert: "You can't access this page"
+    redirect_to root_url , alert: "You shall not pass!"
   end
 end

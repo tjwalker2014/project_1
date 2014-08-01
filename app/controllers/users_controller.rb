@@ -37,6 +37,7 @@ load_and_authorize_resource
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice  => "Successfully updated user."
     else
+      @user.change_error_messages
       render :action => 'edit'
     end
   end

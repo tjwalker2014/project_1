@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <title>GaSchedulerApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -33,22 +33,19 @@
     <div id="content">
 
         <% if current_user %>
-         <p> Hello, <%= current_user.email %> </p>
-         <%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
+         <p> Hello, <%= current_user.email %></p>
+         <p><%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %></p>
         <% else %>
-         <%= link_to 'Log in', login_path %>
+         <p><%= link_to 'Log in', login_path %></p>
         <% end %>
 
-        <div id="container">
-            <% flash.each do |name, msg| %>
-              <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            <% end %>
+        <% flash.each do |name, msg| %>
+          <p><%= content_tag :div, msg, :id => "flash_#{name}" %></p>
+        <% end %>
 
       <%= yield %>
 
       </div>
-    
-    </div>
 
     <div id="push"></div>
 
@@ -61,7 +58,6 @@
           <li><%= mail_to "me@domain.com", image_tag("1406845332_Mail.png", :width =>"40") %></li>
         </ul>
     </div>
-
   </div>
 
 </body>

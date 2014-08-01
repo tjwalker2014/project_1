@@ -3,51 +3,48 @@
   <%= @campus.name %>
 </p>
 
-<%# if statement for showing of google maps %>
-
-<% if @campus.google_map_source do %>
+<% if @campus.google_map_source %>
   <p>
-    <strong>Location:</strong>
+    <strong>Location:</strong><br />
       <iframe src=<%= @campus.google_map_source %> width="300" height="300" frameborder="0" style="border:0"></iframe>
   </p>
-  <% end %>
 <% end %>
 
 <p>
   <strong>Courses running at this campus:</strong>
-  
     <table>
       <tr>
         <th>Course</th>
         <th>Room</th>
-
-  <% @campus.courses.each do |course| %>
-
+          <% @campus.courses.each do |course| %>
       </tr>
-        <tr>
-          <td><%= course.name %></td>
-          <td><%= course.room.name %></td>
-        </tr>
-  <% end %>
-
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.room.name %></td>
+      </tr>
+    <% end %>
   </table>
 </p>
 
 <p>
   <strong>Instructors:</strong>
-  <% @instructors.each do |instructor| %>
-    
-    <%= instructor.name %>
-
-  <% end %>
+    <table>
+      <tr>
+        <% @instructors.each do |instructor| %>
+      </tr>
+      <tr>
+        <td><%= instructor.name %></td>
+      </tr>  
+    <% end %>
+  </table>
 </p>
 
 <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
   <p>
-    <strong>Students on this course:</strong>
+    <strong>Students on this course:</strong><br />
     <% @students.each do |student| %>
 
-      <%= student.name %>
+      <%= student.name %><br />
 
     <% end %>
   </p>

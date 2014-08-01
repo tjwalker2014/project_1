@@ -24,22 +24,23 @@
 </p>
 
 <p>
-  <strong>Instructors:</strong>
+  <strong>Instructors:</strong><br />
   <% @instructors.each do |instructor| %>
     
-    <%= instructor.name %>
+    <%= instructor.name %><br />
 
   <% end %>
 </p>
 
-<% if current_user.role == 'admin' || current_user.role == 'instructor' %>
-  <p>
-    <strong>Students on this course:</strong>
+<% if current_user %>
+  <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
+    <p>
+    <strong>Students on this course:</strong><br />
     <% @students.each do |student| %>
 
-      <%= student.name %>
+      <%= student.name %><br />
 
     <% end %>
   </p>
 <% end %>
-
+<% end %>

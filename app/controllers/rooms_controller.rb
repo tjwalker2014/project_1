@@ -19,6 +19,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to rooms_path, :notice => "Successfully created room."
     else
+       @room.change_error_messages
       render :action => 'new'
     end
   end
@@ -32,6 +33,7 @@ class RoomsController < ApplicationController
     if @room.update_attributes(params[:room])
       redirect_to @room, :notice  => "Successfully updated room."
     else
+      @room.change_error_messages
       render :action => 'edit'
     end
   end

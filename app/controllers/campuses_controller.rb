@@ -21,6 +21,7 @@ class CampusesController < ApplicationController
     if @campus.save
       redirect_to campuses_url, :notice => "Successfully created campus."
     else
+      @campus.change_error_messages
       render :action => 'new'
     end
   end
@@ -34,6 +35,7 @@ class CampusesController < ApplicationController
     if @campus.update_attributes(params[:campus])
       redirect_to @campus, :notice  => "Successfully updated campus."
     else
+      @campus.change_error_messages
       render :action => 'edit'
     end
   end

@@ -22,6 +22,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to @course, :notice => "Successfully created course."
     else
+      @course.change_error_messages
       render :action => 'new'
     end
   end
@@ -35,6 +36,7 @@ class CoursesController < ApplicationController
     if @course.update_attributes(params[:course])
       redirect_to @course, :notice  => "Successfully updated course."
     else
+      @course.change_error_messages
       render :action => 'edit'
     end
   end
