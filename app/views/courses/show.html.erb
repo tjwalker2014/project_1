@@ -27,7 +27,7 @@
   <strong>Instructors:</strong><br />
   <% @instructors.each do |instructor| %>
     
-    <%= instructor.name %><br />
+    <%= link_to(instructor.name, instructor) %><br />
 
   <% end %>
 </p>
@@ -35,12 +35,12 @@
 <% if current_user %>
   <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
     <p>
-    <strong>Students on this course:</strong><br />
-    <% @students.each do |student| %>
-
-      <%= student.name %><br />
-
-    <% end %>
-  </p>
-<% end %>
+      <strong>Students on this course:</strong>
+      <br />
+      <% @students.each do |student| %>
+        <%= link_to(student.name, student) %>
+        <br />
+      <% end %>
+    </p>
+  <% end %>
 <% end %>

@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
-before_filter :authenticate, except: [:new, :create]
-load_and_authorize_resource
+  before_filter :authenticate, except: [:new, :create]
+  load_and_authorize_resource
   
   def index
-    #@users = User.all
-    @q = User.search(params[:q])
-    @users = @q.result
-    @q.build_condition
+    @search = User.search(params[:q])
+    @users = @search.result
   end
 
   def show
@@ -20,7 +18,6 @@ load_and_authorize_resource
   def create
     @user = User.new(params[:user])
     if @user.save
-      #session[:user_id] = @user.id
       redirect_to @user, :notice => "Successfully created user."
     else
       @user.change_error_messages
@@ -47,4 +44,5 @@ load_and_authorize_resource
     @user.destroy
     redirect_to campuses_url, :notice => "Successfully deleted user."
   end
+
 end

@@ -1,5 +1,6 @@
 module ErrorMessagesHelper
   # Render error messages for the given objects. The :message and :header_message options are allowed.
+  
   def error_messages_for(*objects)
     options = objects.extract_options!
     # options[:header_message] ||= I18n.t(:"activerecord.errors.header", :default => "Invalid Fields")
@@ -18,6 +19,7 @@ module ErrorMessagesHelper
       @template.error_messages_for(@object, options)
     end
   end
+  
 end
 
 ActionView::Helpers::FormBuilder.send(:include, ErrorMessagesHelper::FormBuilderAdditions)

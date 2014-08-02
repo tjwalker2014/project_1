@@ -17,7 +17,6 @@ class CampusesController < ApplicationController
 
   def create
     @campus = Campus.new(params[:campus])
-    
     if @campus.save
       redirect_to campuses_url, :notice => "Successfully created campus."
     else

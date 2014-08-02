@@ -13,4 +13,5 @@ class Ability
         can :update, user
     end
   end
+  
 end

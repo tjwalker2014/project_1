@@ -8,15 +8,21 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Currently studying:</strong>
-  <% @user.courses.each do |course| %>
-
-    <%= course.name %>
-
-  <% end %>
-
-</p>
+<% if @user.role == 'student' %>
+  <p>
+    <strong>Currently studying:</strong>
+    <% @user.courses.each do |course| %>
+      <%= course.name %>
+    <% end %>
+  </p>
+<% elsif @user.role == 'instructor' %>
+  <p>
+    <strong>Currently teaching:</strong>
+    <% @user.courses.each do |course| %>
+      <%= course.name %>
+    <% end %>
+  </p>
+<% end %>
 
 <p>
   <strong>Role:</strong>
@@ -25,6 +31,6 @@
 
 <p>
   <%= link_to "Edit", edit_user_path(@user) %> |
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Delete", @user, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", users_path %>
 </p>

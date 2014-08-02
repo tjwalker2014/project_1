@@ -1,66 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-  <title>GaSchedulerApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-  <div id="wrapper">
-
-    <header>
-      <div class="headerclass">General</div>
-      <div class="headerclass"><img src="/assets/galogo2.png", width="50"></div>
-      <div class="headerclass">Assembly</div>
-    </header>
-
-    <nav>
-      <ul id="nav_ul">
-        <li class="nav_li"><%= link_to "Home", homepage_index_path %></li>
-        <li class="nav_li"><%= link_to "Locations", campuses_path %></li>
-        <li class="nav_li"><%= link_to "Courses", courses_path %></li>
-        <% if current_user && current_user.role == 'admin' %>
-          <li class="nav_li"><%= link_to "Users", users_path %></li>
-        <% elsif current_user %>
-          <li class="nav_li"><%= link_to "My Profile", user_path(current_user.id) %></li>
-        <% end %>
-      </ul>
-    </nav>
-
-    <div id="content">
-
-        <% if current_user %>
-         <p> Hello, <%= current_user.email %></p>
-         <p><%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %></p>
-        <% else %>
-         <p><%= link_to 'Log in', login_path %></p>
-        <% end %>
-
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>GaSchedulerApp</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <div class="headerclass">
+          General
+        </div>
+        <div class="headerclass">
+          <img src="/assets/galogo2.png" width="50">
+        </div>
+        <div class="headerclass">
+          Assembly
+        </div>
+      </header>
+      <nav>
+        <ul id="nav_ul">
+          <li class="nav_li">
+            <%= link_to "Home", homepage_index_path %>
+          </li>
+          <li class="nav_li">
+            <%= link_to "Locations", campuses_path %>
+          </li>
+          <li class="nav_li">
+            <%= link_to "Courses", courses_path %>
+          </li>
+          <% if current_user && current_user.role == 'admin' %>
+            <li class="nav_li">
+              <%= link_to "Users", users_path %>
+            </li>
+            <li class="nav_li">
+              <%= link_to "My Profile", user_path(current_user.id) %>
+            </li>
+            <li class="nav_li">
+              <%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </li>
+          <% elsif current_user %>
+            <li class="nav_li">
+              <%= link_to "My Profile", user_path(current_user.id) %>
+            </li>
+            <li class="nav_li">
+              <%= link_to 'Log out', logout_path(session), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </li>
+          <% else %>
+            <li class="nav_li">
+              <%= link_to 'Log in', login_path %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <div id="content">
         <% flash.each do |name, msg| %>
           <p><%= content_tag :div, msg, :id => "flash_#{name}" %></p>
         <% end %>
 
-      <%= yield %>
-
+        <%= yield %>
       </div>
 
-    <div id="push"></div>
+      <div id="push"></div>
 
-    <div id="footer">
+      <div id="footer">
         <ul>
-          <li><%= link_to image_tag("1406768127_Facebook.png", :width =>"40"), "https://www.facebook.com/gnrlassembly", :target => "_blank" %></li>
-          <li><%= link_to image_tag("1406768136_Twitter.png", :width =>"40"), "https://twitter.com/GA_London", :target => "_blank" %></li>
-          <li><%= link_to image_tag("1406768149_LinkedIn.png", :width =>"40"), "https://www.linkedin.com/company/2408664", :target => "_blank" %></li>
-          <li><%= link_to image_tag("1406845729_Intsagram.png", :width =>"40"), "http://instagram.com/ga_london", :target => "_blank" %></li>
-          <li><%= mail_to "me@domain.com", image_tag("1406845332_Mail.png", :width =>"40") %></li>
+          <li>
+            <%= link_to image_tag("1406768127_Facebook.png", :width =>"40"), "https://www.facebook.com/gnrlassembly", :target => "_blank" %>
+          </li>
+          <li>
+            <%= link_to image_tag("1406768136_Twitter.png", :width =>"40"), "https://twitter.com/GA_London", :target => "_blank" %>
+          </li>
+          <li>
+            <%= link_to image_tag("1406768149_LinkedIn.png", :width =>"40"), "https://www.linkedin.com/company/2408664", :target => "_blank" %>
+          </li>
+          <li>
+            <%= link_to image_tag("1406845729_Intsagram.png", :width =>"40"), "http://instagram.com/ga_london", :target => "_blank" %>
+          </li>
+          <li>
+            <%= mail_to "me@domain.com", image_tag("1406845332_Mail.png", :width =>"40") %>
+          </li>
         </ul>
+      </div>
     </div>
-  </div>
-
-</body>
+  </body>
 </html>
-
-<!-- have nav bar on every page -->

@@ -1,11 +1,13 @@
 <%= form_for @room do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />(Please include campus location in your room name)<br />
+    <%= f.label :name %><br />(Please include campus location in your room name)
+    <br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :campus_id %><br />
+    <%= f.label :campus_id %>
+    <br />
     <%= f.collection_select :campus_id, Campus.all, :id, :name %>
   </p>
 

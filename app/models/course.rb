@@ -17,4 +17,5 @@ class Course < ActiveRecord::Base
       self.errors.messages[:Wow] = ["that's really descriptive. Maybe just a line or two so people know what they're signing up for.."]
     end
   end
+  
 end

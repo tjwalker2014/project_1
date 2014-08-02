@@ -12,4 +12,5 @@ class Campus < ActiveRecord::Base
       self.errors.messages[:Looks] = ["like your new campus is top secret, but maybe try giving it a name.."]
     end
   end
+  
 end

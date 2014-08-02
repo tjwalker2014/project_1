@@ -1,34 +1,21 @@
-<%= search_form_for @q do |f| %>
-  
-  <p>
-    <%= f.condition_fields do |c| %>
-    <div class='field'>
-      <%= c.attribute_fields do |a| %>
-        <%= a.attribute_select attributes: [:name] %>
-      <% end %>
-      <%= c.predicate_select %>
-      <%= c.value_fields do |v| %>
-        <%= v.text_field :value %>
-      <% end %>
-    <% end %>
-    </div>
-  </p>
-
-  <%= f.submit class: 'button' %>
-
+<%= search_form_for @search do |f| %>
+  <div class='field'>
+    <%= f.label :name_cont, "Name" %>
+    <%= f.text_field :name_cont, :placeholder => "Find a user" %>
+    <%= f.submit class: 'button' %>
+  </div>
+    <p></p>
 <% end %>
-
-
+  
 <table>
   <tr>
-    <%= content_tag :th, sort_link(@q, :name) %>
-    <%= content_tag :th, sort_link(@q, :role) %>
+    <%= content_tag :th, sort_link(@search, :name) %>
+    <%= content_tag :th, sort_link(@search, :role) %>
   </tr>
-  <% for user in @users %>
+  <% @users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
+      <td><%= link_to(user.name, user) %></td>
       <td><%= user.role %></td>
-      <td><%= link_to "Show", user %></td>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
       <td><%= link_to "Delete", user, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

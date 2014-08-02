@@ -3,14 +3,12 @@
   <%= @room.name %>
 </p>
 
-  <p>
-    <strong>Courses running in this room:</strong>
-      <% @room.courses.each do |course| %>
-
+<p>
+  <strong>Courses running in this room:</strong>
+    <% @room.courses.each do |course| %>
       <p><%= course.name %></p>
-
-      <% end %>
-  </p>
+    <% end %>
+</p>
 
 <p>
   <%= link_to "Edit", edit_room_path(@room) %> |

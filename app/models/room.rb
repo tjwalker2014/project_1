@@ -11,4 +11,5 @@ class Room < ActiveRecord::Base
       self.errors.messages[:Looks] = ["like this new room could be anywhere. Maybe try giving it a name.."]
     end
   end
+  
 end
