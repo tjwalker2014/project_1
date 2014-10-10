@@ -6,7 +6,7 @@
 <% if @campus.google_map_source %>
   <p>
     <strong>Location:</strong><br />
-      <iframe src=<%= @campus.google_map_source %> width="300" height="300" frameborder="0" style="border:0"></iframe>
+      <iframe src=<%= @campus.google_map_source %> width="500" height="500" frameborder="0" style="border:0"></iframe>
   </p>
 <% end %>
 
@@ -15,12 +15,13 @@
     <table>
       <tr>
         <th>Course</th>
-        <th>Room</th>
           <% @campus.courses.each do |course| %>
       </tr>
       <tr>
-        <td><%= course.name %></td>
-        <td><%= course.room.name %></td>
+        <td><%= link_to(course.name, course) %></td>
+          <% if current_user %>
+            <td><%= course.room.name %></td>
+          <% end %>
       </tr>
     <% end %>
   </table>
@@ -33,27 +34,35 @@
         <% @instructors.each do |instructor| %>
       </tr>
       <tr>
-        <td><%= instructor.name %></td>
+        <td><%= link_to(instructor.name, instructor) %></td>
       </tr>  
     <% end %>
   </table>
 </p>
 
-<% if current_user.role == 'admin' || current_user.role == 'instructor' %>
-  <p>
-    <strong>Students on this course:</strong><br />
-    <% @students.each do |student| %>
+<% if current_user %>
+  <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
+    <p>
+      <strong>Students on this course:</strong><br />
+      <% @students.each do |student| %>
 
-      <%= student.name %><br />
+        <%= link_to(student.name, student) %><br />
 
-    <% end %>
-  </p>
+      <% end %>
+    </p>
+  <% end %>
 <% end %>
 
-<p>
-  <%= link_to "Edit", edit_campus_path(@campus) %> |
-  <%= link_to "Delete", @campus, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", campuses_path %>
-</p>
+<% if current_user %>
+  <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
 
-<p><%= link_to "Campus Rooms", rooms_path %></p>
+    <p>
+      <%= link_to "Edit", edit_campus_path(@campus) %> |
+      <%= link_to "Delete", @campus, :confirm => 'Are you sure?', :method => :delete %> |
+      <%= link_to "View All", campuses_path %> |
+      <%= link_to "Campus Rooms", rooms_path %>
+    </p>
+
+  <% end %>
+<% end %>
+

@@ -6,28 +6,29 @@ body {
   background: url(gastudents.jpg);
   background-size: cover;
   font-family: 'Oswald', sans-serif;
+  font-size: 25px;
   text-align: justify;
 }
 
- #wrapper {
+#wrapper {
   background-color: rgba(0,0,0,0.3);
-  width: 600px;
+  width: 70vw;
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px;
 }
 
 header {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px 0 2px 5px;
-  margin-bottom: 5px;
+  padding: 15px 0 2px 5px;
+  margin-bottom: 8px;
 }
 
 .headerclass {
   display: inline-block;
   vertical-align: middle;
   padding: 5px;
-  font-size: 30px;
+  font-size: 45px;
   font-weight: bold;
 }
 
@@ -35,7 +36,7 @@ nav {
   font-weight: bold;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  margin: 5px 0;
+  margin: 8px 0;
 }
 
 #nav_ul {
@@ -59,12 +60,12 @@ a:hover {
 #content {
   background-color: rgba(255, 255, 255, 0.8);
   margin-bottom: 5px;
-  min-height: 300px;
-  padding: 30px 40px 20px;
+  min-height: 500px;
+  padding: 30px 60px 20px;
 }
 
 #push {
-  height: 2px;
+  height: 5px;
 }
 
 #footer {
@@ -111,5 +112,9 @@ th {
 
 #testimonials {
   font-style: italic;
+  font-weight: 300;
+}
+
+.description {
   font-weight: 300;
 }

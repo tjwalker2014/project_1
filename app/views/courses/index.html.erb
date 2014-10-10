@@ -5,10 +5,20 @@
   <% for course in @courses %>
     <tr>
       <td><%= link_to(course.name, course) %></td>
+
+      <% if current_user %>
+        <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
       <td><%= link_to "Edit", edit_course_path(course) %></td>
       <td><%= link_to "Delete", course, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+     <% end %>
+
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "Create Course", new_course_path %></p>
+<% if current_user %>
+  <% if current_user.role == 'admin' || current_user.role == 'instructor' %>
+    <p><%= link_to "Create Course", new_course_path %></p> 
+  <% end %>
+<% end %>

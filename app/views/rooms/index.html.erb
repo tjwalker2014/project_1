@@ -4,8 +4,7 @@
   </tr>
   <% for room in @rooms %>
     <tr>
-      <td><%= room.name %></td>
-      <td><%= link_to "Show", room %></td>
+      <td><%= link_to(room.name, room) %></td>
       <td><%= link_to "Edit", edit_room_path(room) %></td>
       <td><%= link_to "Delete", room, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
