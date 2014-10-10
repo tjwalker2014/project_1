@@ -9,7 +9,7 @@ gem "bcrypt-ruby", "~> 3.0.1"
 
 gem "cancan"
 
-gem 'sqlite3'
+gem 'pg'
 gem 'ransack'
 
 group :development, :test do
