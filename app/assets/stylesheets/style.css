@@ -55,6 +55,7 @@ a {
 
 a:hover {
   opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
 #content {
@@ -96,6 +97,7 @@ td {
 
 .button:hover {
   opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 
 td {
